@@ -1,0 +1,45 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.cards {
+    &__grid {
+        @include m.tablet {
+            @include m.grid(3, 2rem);
+        }
+    }
+}
+
+.card {
+    max-width: 35rem;
+    margin: 0 auto 2rem auto;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    @include m.tablet {
+        max-width: unset;
+        margin: 0;
+    }
+    &__imagen {
+        width: 100%;
+        border: .5rem solid v.$blanco;
+        transition-property: transform;
+        transition-duration: .3s;
+        &:hover {
+            transform: rotate(4deg) scale(1.3);
+        }
+    }
+    &__contenido {
+        background-color: v.$blanco;
+        width: 90%;
+        margin:  0 auto;
+        transform: translateY(-10rem);
+    }
+    &__heading {
+        @include m.headingCursiva;
+        font-size: 3.4rem;
+        padding: 1.5rem 1rem;
+    }
+    &__enlace {
+        @include m.boton(v.$secundario, v.$blanco);
+    }
+}
